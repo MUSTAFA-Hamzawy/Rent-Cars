@@ -140,66 +140,6 @@ html.color-sidebar .sidebar-wrapper {
 }
 
 
-.switcher-wrapper .sidebarcolor1 {
-	background-image: url(../images/bg-themes/1.png);
-}
-.switcher-wrapper .sidebarcolor2 {
-	background-image: url(../images/bg-themes/2.png);
-}
-.switcher-wrapper .sidebarcolor3 {
-	background-image: url(../images/bg-themes/3.png);
-}
-.switcher-wrapper .sidebarcolor4 {
-	background-image: url(../images/bg-themes/4.png);
-}
-.switcher-wrapper .sidebarcolor5 {
-	background-image: url(../images/bg-themes/5.png);
-}
-.switcher-wrapper .sidebarcolor6 {
-	background-image: url(../images/bg-themes/6.png);
-}
-.switcher-wrapper .sidebarcolor7 {
-	background-image: url(../images/bg-themes/7.png);
-}
-.switcher-wrapper .sidebarcolor8 {
-	background-image: url(../images/bg-themes/8.png);
-}
-
-
-
-
-html.color-sidebar.sidebarcolor1 .sidebar-wrapper {
-    background-image: url(../images/bg-themes/1.png);
-}
-
-html.color-sidebar.sidebarcolor2 .sidebar-wrapper {
-    background-image: url(../images/bg-themes/2.png);
-}
-
-html.color-sidebar.sidebarcolor3 .sidebar-wrapper {
-    background-image: url(../images/bg-themes/3.png);
-}
-
-html.color-sidebar.sidebarcolor4 .sidebar-wrapper {
-    background-image: url(../images/bg-themes/4.png);
-}
-
-html.color-sidebar.sidebarcolor5 .sidebar-wrapper {
-    background-image: url(../images/bg-themes/5.png);
-}
-
-html.color-sidebar.sidebarcolor6 .sidebar-wrapper {
-    background-image: url(../images/bg-themes/6.png);
-}
-
-html.color-sidebar.sidebarcolor7 .sidebar-wrapper {
-    background-image: url(../images/bg-themes/7.png);
-}
-
-html.color-sidebar.sidebarcolor8 .sidebar-wrapper {
-    background-image: url(../images/bg-themes/8.png);
-}
-
 
 
 
