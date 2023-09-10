@@ -11,15 +11,25 @@
     </div>
     <!--navigation-->
     <ul class="metismenu" id="menu">
-        <li class="menu-label">Forms & Tables</li>
+        <li class="menu-label">User</li>
+        <li>
+            <a href="{{route('dashboard')}}">
+                <div class="parent-icon"><i class='bx bx-message-square-edit'></i>
+                </div>
+                <div class="menu-title">Dashboard</div>
+            </a>
+        </li>
+        <li class="menu-label">Control Panel</li>
         <li>
             <a class="has-arrow" href="javascript:;">
                 <div class="parent-icon"><i class='bx bx-message-square-edit'></i>
                 </div>
-                <div class="menu-title">Forms</div>
+                <div class="menu-title">Brands</div>
             </a>
             <ul>
-                <li> <a href="form-elements.html"><i class="bx bx-right-arrow-alt"></i>Form Elements</a>
+                <li> <a href="{{route('brand.create')}}"><i class="bx bx-right-arrow-alt"></i>Add Brand</a>
+                </li>
+                <li> <a href="{{route('brand.index')}}"><i class="bx bx-right-arrow-alt"></i>Brand List</a>
                 </li>
             </ul>
         </li>

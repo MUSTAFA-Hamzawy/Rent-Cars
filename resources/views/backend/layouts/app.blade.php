@@ -11,7 +11,29 @@
     @include('backend.includes.css')
     @yield('css')
     <style>
-        @yield('inline-style')
+        @yield('style')
+        table th, td {
+            text-align: center;
+            vertical-align: middle;
+        }
+        table td {
+            white-space: nowrap; /* Prevent text from wrapping */
+            overflow: hidden; /* Hide overflowing content */
+            text-overflow: ellipsis; /* Show an ellipsis (...) for overflowing content */
+        }
+        .required-star {
+            color: red !important; /* Set the color to red */
+            margin-left: 5px; /* Add some spacing between the label and asterisk */
+        }
+        .data-table-img{
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+        }
+        table thead {
+            background-color: #0d6efd;
+            color: white;
+        }
     </style>
     <title>@yield('page-title')</title>
 </head>
@@ -30,6 +52,9 @@
     <!--start page wrapper -->
     <div class="page-wrapper">
         <div class="page-content">
+            <!--breadcrumb -->
+            @include('backend.includes.breadcrumb')
+            <!--end breadcrumb -->
             @yield('content')
         </div>
     </div>
@@ -141,10 +166,12 @@
     </div>
 </div>
 <!--end switcher-->
-
+<!-- Sweet alert script-->
+<script src="{{asset('assets')}}/js/sweetalert2.js"></script>
+@include('sweetalert::alert')
 @include('backend.includes.js')
-@yield('js')
 @yield('ajax')
+@yield('js')
 </body>
 
 </html>
