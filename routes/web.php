@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,12 +13,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('backend.dashboard');
+})->name('dashboard');
 
-Route::get('/brand', function () {
-  return view('backend.brand.brand_default');
-});
-Route::get('/brand/add', function () {
-  return view('backend.brand.brand_add');
+Route::fallback(function(){
+    return view('not_found_page');
 });
