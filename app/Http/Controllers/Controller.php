@@ -4,9 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controller as BaseController;
 
 class Controller extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
+
+    protected function handleResponse(bool $status, $message = 'Success'): JsonResponse{
+            return $status ?
+                response()->json(['message' => $message]) :
+                response()->json(['message' => 'Failed, please try again.'], 404);
+    }
 }
