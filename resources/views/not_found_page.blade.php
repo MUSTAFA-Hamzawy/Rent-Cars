@@ -33,6 +33,7 @@
         cursor: pointer;
     }
 </style>
+<title>Not Found</title>
 <div class="container">
     <h1>:(</h1><br>
     <h2>Page not found, check the URL and try again.</h2><br><br>

@@ -10,13 +10,15 @@ use RealRashid\SweetAlert\Facades\Alert;
 |--------------------------------------------------------------------------
 */
 //
-//Route::middleware([])->resource('brand', BrandController::class)
-//    ->except('update');
+
 
 Route::middleware([])->group(function (){
-   Route::resource('brand', BrandController::class)
+    Route::delete('brand/remove_all', [BrandController::class, 'truncate'])->name('brand.truncate');
+    Route::resource('brand', BrandController::class)
        ->missing(function (){
-           toast('Failed, this brand does not exist.','error')->position('top-start');;
+           $alertPosition = app()->getLocale() == 'en' ? 'top-right' : 'top-start';
+           toast(trans('general.page_not_exist'),'error')->position($alertPosition);;
            return to_route('brand.index');
        });
+
 });
