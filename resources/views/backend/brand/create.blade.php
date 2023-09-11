@@ -3,35 +3,36 @@
     /*<!--notification js -->*/
     <link href="{{asset('assets/plugins/notifications/css/lobibox.min.css')}}" rel="stylesheet" />
 @endsection
-@section('page-title', 'Add Brand')
-@section('breadcrumb-title', 'Brands')
+@section('page-title', trans('headers.add_brand'))
+@section('breadcrumb-title', trans('headers.brands'))
 @section('breadcrumb-sub-titles')
     <li class="breadcrumb-item"><a href="{{route('brand.index')}}"><i class="bx
                 bx-home-alt"></i></a></li>
-    <li class="breadcrumb-item active" aria-current="page">Add Brand</li>
+    <li class="breadcrumb-item active" aria-current="page">@lang('headers.add_brand')</li>
 @endsection
     @section('content')
         <div class="card">
             <div class="card-body">
                 <div class="border p-4 rounded">
                     <div class="card-title d-flex align-items-center">
-                        <h5 class="mb-0 text-info">Add Brand</h5>
+                        <h5 class="mb-0 text-info">@lang('headers.add_brand')</h5>
                     </div>
                     <hr>
                     <form id="data-form" action="{{route('brand.store')}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row mb-3">
                             <label for="brand_name" class="col-sm-3 col-form-label">
-                                Enter Brand Name<span class="required-star">*</span>
+                                @lang('brand.name_placeholder')<span class="required-star">*</span>
                             </label>
                             <div class="col-sm-9">
-                                <input name="brand_name" type="text" class="form-control" id="brand_name" placeholder="Enter Brand Name" required>
+                                <input name="brand_name" type="text" class="form-control" id="brand_name"
+                                       placeholder="{{trans('brand.name_placeholder')}}" required>
                                 <small style="color: #e20000" class="error" id="brand_name-error"></small>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="mytextarea" class="col-sm-3 col-form-label">
-                                Enter Brand Description
+                                @lang('brand.description')
                             </label>
                             <div class="col-sm-9">
                                 <textarea id="mytextarea" name="brand_description"></textarea>
@@ -40,7 +41,7 @@
                         </div>
                         <div class="row mb-3">
                             <label for="upload_image" class="col-sm-3 col-form-label">
-                                Upload Logo<span class="required-star">*</span>
+                                @lang('general.upload_logo')<span class="required-star">*</span>
                             </label>
                             <div class="col-sm-9">
                                 <input name="brand_logo" id="upload_image" class="form-control" type="file" required>

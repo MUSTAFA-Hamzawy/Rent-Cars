@@ -3,19 +3,19 @@
     /*<!--notification js -->*/
     <link href="{{asset('assets/plugins/notifications/css/lobibox.min.css')}}" rel="stylesheet" />
 @endsection
-@section('page-title', 'Edit Brand')
-@section('breadcrumb-title', 'Brands')
+@section('page-title', trans('headers.edit_brand'))
+@section('breadcrumb-title', trans('headers.brands'))
 @section('breadcrumb-sub-titles')
     <li class="breadcrumb-item"><a href="{{route('brand.index')}}"><i class="bx
                 bx-home-alt"></i></a></li>
-    <li class="breadcrumb-item active" aria-current="page">Edit Brand</li>
+    <li class="breadcrumb-item active" aria-current="page">@lang('headers.edit_brand')</li>
 @endsection
 @section('content')
     <div class="card">
         <div class="card-body">
             <div class="border p-4 rounded">
                 <div class="card-title d-flex align-items-center">
-                    <h5 class="mb-0 text-info">Edit Brand</h5>
+                    <h5 class="mb-0 text-info">@lang('headers.edit_brand')</h5>
                 </div>
                 <hr>
                 <form id="data-form" method="POST" enctype="multipart/form-data">
@@ -23,7 +23,7 @@
                     @method('PUT')
                     <div class="row mb-3">
                         <label for="brand_name" class="col-sm-3 col-form-label">
-                            Brand Name<span class="required-star">*</span>
+                            @lang('brand.name')<span class="required-star">*</span>
                         </label>
                         <div class="col-sm-9">
                             <input name="brand_name" type="text" class="form-control" id="brand_name" value="{{$item->brand_name}}" required>
@@ -32,7 +32,7 @@
                     </div>
                     <div class="row mb-3">
                         <label for="mytextarea" class="col-sm-3 col-form-label">
-                            Brand Description
+                            @lang('brand.description')
                         </label>
                         <div class="col-sm-9">
                             <textarea id="mytextarea" name="brand_description">{{$item->brand_description}}</textarea>
@@ -41,7 +41,7 @@
                     </div>
                     <div class="row mb-3">
                         <label for="upload_image" class="col-sm-3 col-form-label">
-                            Upload Logo<span class="required-star">*</span>
+                            @lang('general.upload_logo')<span class="required-star">*</span>
                         </label>
                         <div class="col-sm-9">
                             <input name="brand_logo" id="upload_image" class="form-control" type="file" >
@@ -114,7 +114,9 @@
                     processData: false, // Important: set to false when sending FormData
                     success: function (response) {
                         // Reset the form
-                        $('#data-form')[0].reset();
+                        $('#upload_image').val('');
+                        $('#image_preview').attr('src', null);
+                        $('#image_preview').hide();
 
                         // remove errors if the conditions are true
                         $('#data-form *').filter(':input.is-invalid').each(function(){

@@ -1,6 +1,22 @@
 <header>
     <div class="topbar d-flex align-items-center">
         <nav class="navbar navbar-expand">
+            <div style="margin-top: 10px" class="search-bar flex-grow-1">
+                <div class="position-relative search-bar-box">
+                    <ul>
+                        @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                            <a class="btn btn-primary btn-sm radius-30 px-4"
+                               rel="alternate"
+                               hreflang="{{
+                                $localeCode
+                                }}" href="{{
+                                LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                {{ $properties['native'] }}
+                            </a>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
             <div class="top-menu ms-auto">
                 <ul class="navbar-nav align-items-center">
                     <li class="nav-item dropdown dropdown-large">

@@ -1,23 +1,54 @@
 @php use App\MyHelpers;use RealRashid\SweetAlert\Facades\Alert; @endphp
 @extends('backend.layouts.app')
-@section('page-title', 'Brands')
-@section('breadcrumb-title', 'Brands')
+@section('page-title', trans('headers.brands'))
+@section('breadcrumb-title', trans('headers.brands'))
 @section('content')
     <div class="card">
         <div class="card-body">
             <div class="table-responsive">
                 <div class="ms-auto" style="margin-bottom: 20px">
                     <a href="{{route('brand.create')}}" class="btn btn-primary radius-30 mt-2 mt-lg-0">
-                        <i class="bx bxs-plus-square"></i>Add New Brand</a></div>
+                        <i class="bx bxs-plus-square"></i>@lang('brand.add')</a>
+                </div>
+                @if(count($data) > 0)
+                    <div class="ms-auto" style="margin-bottom: 20px">
+                        <a type="button" class="btn btn-danger radius-30 mt-2 mt-lg-0" data-bs-toggle="modal"
+                           data-bs-target="#exampleVerticallycenteredModal2">
+                            <i class="bx bxs-trash"></i>@lang('Remove All')</a>
 
+                        <!-- Confirmation modal  -->
+                        <div class="modal fade" id="exampleVerticallycenteredModal2" tabindex="-1"
+                             style="display: none;" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">@lang('general.confirm_msg')</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                    </div>
+                                    <form method="post" action="{{route('brand.truncate')}}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">@lang('general.cancel')</button>
+                                            <button type="submit" class="btn btn-primary">@lang('general.confirm')</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Confirmation modal  -->
+                    </div>
+                @endif
                 <table id="data_table" class="table table-striped table-bordered" style="width:100%">
                     <thead>
                     <tr>
-                        <th>Brand Logo</th>
-                        <th>Brand Name</th>
-                        <th>Brand Slug</th>
-                        <th>Created Date</th>
-                        <th>Actions</th>
+                        <th>@lang('brand.logo')</th>
+                        <th>@lang('brand.name')</th>
+                        <th>@lang('brand.slug')</th>
+                        <th>@lang('general.created_at')</th>
+                        <th>@lang('general.controls')</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -34,26 +65,24 @@
                                 <div class="d-flex order-actions">
                                     <a href="{{route('brand.edit', $item->id)}}" class=""><i
                                             class="bx bxs-edit"></i></a>
-                                    <a type="button" class="ms-3" data-bs-toggle="modal"
-                                       data-bs-target="#exampleVerticallycenteredModal"><i class="bx bxs-trash"></i></a>
+                                    <a type="button" class="ms-3" data-bs-toggle="modal" data-bs-target="#exampleVerticallycenteredModal"><i class="bx bxs-trash"></i></a>
                                     <!-- Confirmation modal  -->
                                     <div class="modal fade" id="exampleVerticallycenteredModal" tabindex="-1"
                                          style="display: none;" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title">Are you sure ?</h5>
+                                                    <h5 class="modal-title">@lang('general.confirm_msg')</h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                             aria-label="Close"></button>
                                                 </div>
-                                                <form id="remove-form" method="post" action="{{route('brand.destroy', $item->id)}}">
+                                                <form method="post" action="{{route('brand.destroy', $item->id)}}">
                                                     @csrf
                                                     @method('DELETE')
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary"
-                                                                data-bs-dismiss="modal">Cancel
-                                                        </button>
-                                                        <button type="submit" class="btn btn-primary">Sure</button>
+                                                                data-bs-dismiss="modal">@lang('general.cancel')</button>
+                                                        <button type="submit" class="btn btn-primary">@lang('general.confirm')</button>
                                                     </div>
                                                 </form>
                                             </div>
@@ -105,47 +134,3 @@
         });
     </script>
 @endsection
-{{--@section('ajax')--}}
-{{--    <script type="text/javascript">--}}
-{{--        $(document).ready(function () {--}}
-{{--            $('#remove-form').on('submit', function (event) {--}}
-{{--                event.preventDefault();--}}
-{{--                var formData = new FormData(this);--}}
-{{--                $.ajax({--}}
-{{--                    url: "{{ route('brand.destroy', $item->id)}}",--}}
-{{--                    method: 'POST',--}}
-{{--                    data: formData,--}}
-{{--                    headers: {--}}
-{{--                        "X-CSRF-TOKEN": "{{ csrf_token() }}" // Set the CSRF token in the headers--}}
-{{--                    },--}}
-{{--                    dataType: 'json',--}}
-{{--                    contentType: false, // Important: set to false when sending FormData--}}
-{{--                    processData: false, // Important: set to false when sending FormData--}}
-{{--                    success: function (response) {--}}
-{{--                        console.log(response.message);--}}
-{{--                        success_noti(response.message);--}}
-{{--                        window.location.reload();--}}
-{{--                    },--}}
-{{--                    error: function (response) {--}}
-{{--                        var jsonResponse = $.parseJSON(response.responseText);--}}
-{{--                        if (response.status === 404) {--}}
-{{--                            if (jsonResponse && jsonResponse.message) {--}}
-{{--                                Swal.fire({--}}
-{{--                                    icon: 'error',--}}
-{{--                                    title: 'Errorrrer',--}}
-{{--                                    text: jsonResponse.message,--}}
-{{--                                    showCancelButton: false,--}}
-{{--                                    confirmButtonText: 'OK',--}}
-{{--                                }).then((result) => {--}}
-{{--                                    if (result.isConfirmed) {--}}
-{{--                                        window.location.reload();--}}
-{{--                                    }--}}
-{{--                                });--}}
-{{--                            }--}}
-{{--                        }--}}
-{{--                    }--}}
-{{--                });--}}
-{{--            });--}}
-{{--        });--}}
-{{--    </script>--}}
-{{--@endsection--}}
