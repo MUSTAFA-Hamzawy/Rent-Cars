@@ -9,37 +9,46 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Illuminate\View\View;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class BrandController extends Controller
 {
-    const CRUD = [
-        'index'  => 'brand.index',
-        'create' => 'brand.create',
-        'store' => 'brand.store',
-        'show' => 'brand.show',
-        'edit' => 'brand.edit',
-        'update' => 'brand.edit',
-        'destroy' => 'brand.destroy',
+    private const VIEWS = [
+        'index'  => 'backend.brand.index',
+        'create' => 'backend.brand.create',
+        'show' => 'backend.brand.show',
+        'edit' => 'backend.brand.edit',
     ];
+    private $images_dir;
+
+    public function __construct()
+    {
+        $this->images_dir = config('filesystems.media.images') . 'brand';
+    }
+
+
     /**
      * Display a listing of the resource.
+     * @return View
      */
-    public function index()
+    public function index(): View
     {
         $data = Brand::orderBy('created_at')->paginate(15);
-        return view('backend.brand.index', ['data' => $data]);
+        return view(self::VIEWS['index'], ['data' => $data]);
     }
 
     /**
      * Show the form for creating a new resource.
+     * @return View
      */
-    public function create()
+    public function create(): View
     {
-        return view('backend.brand.create');
+        return view(self::VIEWS['create']);
     }
-
 
     /**
      * Store a newly created resource in storage.
@@ -52,13 +61,14 @@ class BrandController extends Controller
             'brand_name' => $request->input('brand_name'),
             'brand_slug' => Str::slug($request->input('brand_name')),
             'brand_description' => $request->input('brand_description'),
-            'brand_logo' => MyHelpers::uploadImage($request->file('brand_logo'), 'app/public/media/images/brand'),
+            'brand_logo' => MyHelpers::uploadImage($request->file('brand_logo'), $this->images_dir),
         ];
-        return $this->handleResponse(! is_null(Brand::create($record)), 'brand is created successfully');
+        return $this->handleResponse(! is_null(Brand::create($record)), trans('general.stored', ['attribute' => trans('modules.brand')]));
     }
 
     /**
      * Display the specified resource.
+     * @param Brand $brand
      */
     public function show(Brand $brand)
     {
@@ -67,43 +77,66 @@ class BrandController extends Controller
 
     /**
      * Show the form for editing the specified resource.
+     * @param Brand $brand
+     * @return View
      */
-    public function edit(Brand $brand)
+    public function edit(Brand $brand): View
     {
-        return view('backend.brand.edit', ['item' => $brand]);
+        return view(self::VIEWS['edit'], ['item' => $brand]);
     }
 
     /**
      * Update the specified resource in storage.
+     * @param BrandRequest $request
+     * @param Brand $brand
+     * @return JsonResponse
      */
     public function update(BrandRequest $request, Brand $brand): JsonResponse
     {
+        // TODO: need to check if there is any value changed or not
+        // Fetching the new data
         $record = [
             'brand_name' => $request->brand_name,
             'brand_slug' => Str::slug($request->brand_name),
             'brand_description' => $request->brand_description
         ];
 
+        // Handling file if it exists
         if ($request->hasFile('brand_logo')){
-            $record['brand_logo'] =  MyHelpers::uploadImage($request->file('brand_logo'), 'app/public/media/images/brand');
-            MyHelpers::deleteImageFromStorage($brand->brand_logo, 'app/public/media/images/brand');
+            $record['brand_logo'] =  MyHelpers::uploadImage($request->file('brand_logo'), $this->images_dir);
+            MyHelpers::deleteImageFromStorage($brand->brand_logo, $this->images_dir);
         }
 
-
-        return $this->handleResponse(! is_null(Brand::where('id', $brand->id)->update($record)), 'brand is updated successfully');
+        // update
+        $updated = Brand::where('id', $brand->id)->update($record);
+        return $this->handleResponse(! is_null($updated), trans('general.updated', ['attribute' => trans('modules.brand')]));
     }
 
     /**
      * Remove the specified resource from storage.
+     * @param Brand $brand
+     * @return RedirectResponse
      */
     public function destroy(Brand $brand): RedirectResponse
     {
         if ($brand->delete()){
             // Removing the image from storage
-            MyHelpers::deleteImageFromStorage($brand->brand_logo, 'app/public/media/images/brand');
-            toast('Success Toast','success');
+            MyHelpers::deleteImageFromStorage($brand->brand_logo, $this->images_dir);
+            toast(trans('general.success', ['attribute' => trans('modules.brand')]),'success');
         }
-        else toast('Failed','error');
+        else toast(trans('general.failed', ['attribute' => trans('modules.brand')]),'error');
+        return to_route('brand.index');
+    }
+
+    /**
+     * To Remove the whole data
+     * @return RedirectResponse
+     */
+    public function truncate(): RedirectResponse
+    {
+        Brand::truncate();
+        File::deleteDirectory(storage_path($this->images_dir));
+        toast(trans('general.success', ['attribute' => trans('modules.brand')]),'success');
         return to_route('brand.index');
     }
 }
