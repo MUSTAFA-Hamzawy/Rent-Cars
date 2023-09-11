@@ -73,4 +73,9 @@ return [
         public_path('storage') => storage_path('app/public'),
     ],
 
+    // Relative to storage dir
+    'media' => [
+        'images' => 'app/public/media/images/'
+    ],
+
 ];
