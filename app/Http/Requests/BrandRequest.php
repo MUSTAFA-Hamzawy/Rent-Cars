@@ -31,4 +31,13 @@ class BrandRequest extends FormRequest
             'brand_description' => ['nullable','string'],
         ];
     }
+
+    public function attributes()
+    {
+        return [
+            'brand_name' => trans('brand.name'),
+            'brand_logo' => trans('brand.logo'),
+            'brand_description' => trans('brand.description')
+        ];
+    }
 }
