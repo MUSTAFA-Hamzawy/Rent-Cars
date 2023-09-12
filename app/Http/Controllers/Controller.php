@@ -14,6 +14,6 @@ class Controller extends BaseController
     protected function handleResponse(bool $status, $message = 'Success'): JsonResponse{
             return $status ?
                 response()->json(['message' => $message]) :
-                response()->json(['message' => 'Failed, please try again.'], 404);
+                response()->json(['message' => $message], 404);
     }
 }

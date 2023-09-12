@@ -93,7 +93,6 @@ class BrandController extends Controller
      */
     public function update(BrandRequest $request, Brand $brand): JsonResponse
     {
-        // TODO: need to check if there is any value changed or not
         // Fetching the new data
         $record = [
             'brand_name' => $request->brand_name,
