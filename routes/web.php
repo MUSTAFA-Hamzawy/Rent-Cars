@@ -19,3 +19,13 @@ Route::get('/', function () {
 Route::fallback(function(){
     return view('not_found_page');
 });
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});
