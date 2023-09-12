@@ -7,6 +7,7 @@ return [
 
     // Dashboard
     'dashboard' => 'Dashboard',
+    'profile' => 'Profile',
 
     // Brand
     'brands' => 'Brands',
