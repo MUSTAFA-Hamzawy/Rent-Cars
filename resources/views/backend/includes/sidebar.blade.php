@@ -1,7 +1,7 @@
 <div class="sidebar-wrapper" data-simplebar="true">
     <div class="sidebar-header">
         <div>
-            <img src="{{asset("assets/images/logo-icon.png")}}" class="logo-icon" alt="logo icon">
+            <img src="{{asset('logo.png')}}" class="logo-icon" alt="logo icon">
         </div>
         <div>
             <h4 class="logo-text">{{env('APP_NAME')}}</h4>
@@ -14,9 +14,16 @@
         <li class="menu-label">@lang('sidebar.user')</li>
         <li>
             <a href="{{route('dashboard')}}">
-                <div class="parent-icon"><i class='bx bx-message-square-edit'></i>
+                <div class="parent-icon"><i class='bx bx-home-circle'></i>
                 </div>
                 <div class="menu-title">@lang('sidebar.dashboard')</div>
+            </a>
+        </li>
+        <li>
+            <a href="{{route('profile.show')}}">
+                <div class="parent-icon"><i class='bx bx-user'></i>
+                </div>
+                <div class="menu-title">@lang('sidebar.profile')</div>
             </a>
         </li>
         <li class="menu-label">@lang('sidebar.control_panel')</li>

@@ -12,7 +12,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 //
 
 
-Route::middleware([])->group(function (){
+Route::middleware(['auth'])->group(function (){
     Route::delete('brand/remove_all', [BrandController::class, 'truncate'])->name('brand.truncate');
     Route::resource('brand', BrandController::class)
        ->missing(function (){

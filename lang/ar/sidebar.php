@@ -5,8 +5,9 @@ return [
     'user' => 'المستخدم',
     'control_panel' => 'أدوات التحكم',
 
-    // Dashboard
+    // User
     'dashboard' => 'الداش بورد',
+    'profile' => 'الملف الشخصى',
 
     // Brand
     'brands' => 'الماركات',

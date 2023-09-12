@@ -8,7 +8,9 @@ return [
     'confirm_msg' => 'هل أنت متأكد ؟',
     'success' => 'تم بنجاح',
     'failed' => 'حدث خطأ ما, برجاء المحاولة مره أخرى',
+    'fail' => 'خطأ',
     'page_not_exist' => 'صفحة غير موجودة',
+    'nothing_changed' => 'لم يتم تغيير شئ',
 
     // Buttons
     'save' => 'حفظ',

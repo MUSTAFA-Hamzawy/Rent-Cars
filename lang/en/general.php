@@ -8,7 +8,9 @@ return [
     'confirm_msg' => 'Are you sure ?',
     'success' => 'Succeeded',
     'failed' => 'Failed, Kindly try again.',
+    'fail' => 'Failed',
     'page_not_exist' => 'Failed, this page does not exist.',
+    'nothing_changed' => 'Nothing changed',
 
     // Buttons
     'save' => 'Save.',

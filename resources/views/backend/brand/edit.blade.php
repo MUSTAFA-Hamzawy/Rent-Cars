@@ -137,7 +137,7 @@
                             if (jsonResponse && jsonResponse.message) {
                                 Swal.fire({
                                     icon: 'error',
-                                    title: 'Errorrrer',
+                                    title: "{{trans('general.fail')}}",
                                     text: jsonResponse.message,
                                     showCancelButton: false,
                                     confirmButtonText: 'OK',

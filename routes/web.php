@@ -13,9 +13,23 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('backend.dashboard');
-})->name('dashboard');
+    return view('home_page');
+})->name('home');
 
 Route::fallback(function(){
     return view('not_found_page');
+});
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+    Route::get('/dashboard2', function () {
+        return view('dashboard');
+    })->name('dashboard');
+
+    Route::get('/dashboard', function () {
+        return view('backend.dashboard');
+    })->name('dashboard');
 });
