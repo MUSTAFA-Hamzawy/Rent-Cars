@@ -20,6 +20,8 @@ return new class extends Migration
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
+            $table->enum('role', ['0', '1'])->default('1')
+                ->comment('0: admin || 1: normal user');
             $table->timestamps();
         });
     }
