@@ -2,5 +2,6 @@
 
 return [
 
-    'brand'  => 'Brand',
+    'brand'     => 'Brand',
+    'category'  => 'Category',
 ];

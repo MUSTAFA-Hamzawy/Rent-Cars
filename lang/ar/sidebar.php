@@ -13,4 +13,9 @@ return [
     'brands' => 'الماركات',
     'add_brand' => 'إضافة ماركه',
     'brand_list' => 'قائمة الماركات',
+
+    // Category
+    'categories' => 'التصنيفات',
+    'add_category' => 'إضافة تصنيف',
+    'category_list' => 'قائمة التصنيفات',
 ];

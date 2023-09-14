@@ -3,51 +3,31 @@
     /*<!--notification js -->*/
     <link href="{{asset('assets/plugins/notifications/css/lobibox.min.css')}}" rel="stylesheet" />
 @endsection
-@section('page-title', trans('headers.edit_brand'))
-@section('breadcrumb-title', trans('headers.brands'))
+@section('page-title', trans('headers.edit_category'))
+@section('breadcrumb-title', trans('headers.categories'))
 @section('breadcrumb-sub-titles')
-    <li class="breadcrumb-item"><a href="{{route('brand.index')}}"><i class="bx
+    <li class="breadcrumb-item"><a href="{{route('category.index')}}"><i class="bx
                 bx-home-alt"></i></a></li>
-    <li class="breadcrumb-item active" aria-current="page">@lang('headers.edit_brand')</li>
+    <li class="breadcrumb-item active" aria-current="page">@lang('headers.edit_category')</li>
 @endsection
 @section('content')
     <div class="card">
         <div class="card-body">
             <div class="border p-4 rounded">
                 <div class="card-title d-flex align-items-center">
-                    <h5 class="mb-0 text-info">@lang('headers.edit_brand')</h5>
+                    <h5 class="mb-0 text-info">@lang('headers.edit_category')</h5>
                 </div>
                 <hr>
                 <form id="data-form" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="row mb-3">
-                        <label for="brand_name" class="col-sm-3 col-form-label">
-                            @lang('brand.name')<span class="required-star">*</span>
+                        <label for="category_name" class="col-sm-3 col-form-label">
+                            @lang('category.name')<span class="required-star">*</span>
                         </label>
                         <div class="col-sm-9">
-                            <input name="brand_name" type="text" class="form-control" id="brand_name" value="{{$item->brand_name}}" required>
-                            <small style="color: #e20000" class="error" id="brand_name-error"></small>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label for="mytextarea" class="col-sm-3 col-form-label">
-                            @lang('brand.description')
-                        </label>
-                        <div class="col-sm-9">
-                            <textarea id="mytextarea" name="brand_description">{{$item->brand_description}}</textarea>
-                        </div>
-                        <small style="color: #e20000" class="error" id="brand_description-error"></small>
-                    </div>
-                    <div class="row mb-3">
-                        <label for="upload_image" class="col-sm-3 col-form-label">
-                            @lang('general.upload_logo')<span class="required-star">*</span>
-                        </label>
-                        <div class="col-sm-9">
-                            <input name="brand_logo" id="upload_image" class="form-control" type="file" >
-                            <small style="color: #e20000" class="error" id="brand_logo-error"></small>
-                            <img id="image_preview" src="" alt="Preview Image"
-                                 style="width: 200px; height:170px;display: none; margin-top: 10px">
+                            <input name="category_name" type="text" class="form-control" id="category_name" value="{{$item->category_name}}" required>
+                            <small style="color: #e20000" class="error" id="category_name-error"></small>
                         </div>
                     </div>
                     <div class="row">
@@ -66,26 +46,6 @@
     <script src="{{asset('assets')}}/plugins/notifications/js/lobibox.min.js"></script>
     <script src="{{asset('assets')}}/plugins/notifications/js/notifications.min.js"></script>
     <script src="{{asset('assets')}}/plugins/notifications/js/notification-custom-script.js"></script>
-
-    <script src="{{asset('assets')}}/js/tinymce.min.js"></script>
-    <script>
-        tinymce.init({
-            selector: '#mytextarea'
-        });
-    </script>
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#upload_image').change(function (e) {
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                    $('#image_preview').attr('src', e.target.result);
-                    $('#image_preview').show(); // Show the image
-                }
-                reader.readAsDataURL(e.target.files[0]);
-            });
-        });
-    </script>
 @endsection
 
 @section('ajax')
@@ -103,7 +63,7 @@
 
                 var formData = new FormData(this);
                 $.ajax({
-                    url: "{{ route('brand.update', $item->id)}}",
+                    url: "{{ route('category.update', $item->id)}}",
                     method: 'POST',
                     data: formData,
                     headers: {

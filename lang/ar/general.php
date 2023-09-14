@@ -20,5 +20,6 @@ return [
     // Others
     'upload_logo' => 'رفع صورة',
     'created_at' => 'تاريخ الإضافه',
+    'created_by' => "إضافة بواسطة",
     'controls' => 'التحكم',
 ];

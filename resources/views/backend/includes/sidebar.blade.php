@@ -42,6 +42,21 @@
                 </li>
             </ul>
         </li>
+        <li>
+            <a class="has-arrow" href="javascript:;">
+                <div class="parent-icon"><i class='bx bx-message-square-edit'></i>
+                </div>
+                <div class="menu-title">@lang('sidebar.categories')</div>
+            </a>
+            <ul>
+                <li> <a href="{{route('category.create')}}"><i class="bx bx-right-arrow-alt"></i>@lang('sidebar.add_category')
+                    </a>
+                </li>
+                <li> <a href="{{route('category.index')}}"><i class="bx bx-right-arrow-alt"></i>@lang('sidebar.category_list')
+                    </a>
+                </li>
+            </ul>
+        </li>
     </ul>
     <!--end navigation-->
 </div>
