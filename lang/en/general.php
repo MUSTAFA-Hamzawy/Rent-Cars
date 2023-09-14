@@ -20,6 +20,7 @@ return [
     // Others
     'upload_logo' => 'Upload Image',
     'created_at' => 'Created Date',
+    'created_by' => 'Created By',
     'controls' => 'Controls',
 
 ];

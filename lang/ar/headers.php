@@ -10,4 +10,9 @@ return [
     'brands' => 'الماركات',
     'add_brand' => 'إضافة ماركه',
     'edit_brand' => 'تعديل ماركه',
+
+    'category' => 'التصنيف',
+    'categories' => 'التصنيفات',
+    'add_category' => 'إضافة تصنيف',
+    'edit_category' => 'تعديل تصنيف',
 ];
