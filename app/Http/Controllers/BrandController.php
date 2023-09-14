@@ -33,7 +33,7 @@ class BrandController extends Controller
      */
     public function index(): View
     {
-        $data = Brand::orderBy('created_at')->paginate(15);
+        $data = Brand::orderBy('created_at')->paginate(self::PAGINATION_COUNT);
         return view(self::VIEWS['index'], ['data' => $data]);
     }
 
