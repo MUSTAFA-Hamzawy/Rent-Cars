@@ -38,7 +38,8 @@ class RouteServiceProvider extends ServiceProvider
                 ->prefix(LaravelLocalization::setLocale())
                 ->group(base_path('routes/web.php'))
                 ->group(base_path('routes/brand.php'))
-                ->group(base_path('routes/category.php'));
+                ->group(base_path('routes/category.php'))
+                ->group(base_path('routes/model.php'));
         });
     }
 }

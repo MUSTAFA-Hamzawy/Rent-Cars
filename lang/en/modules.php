@@ -4,4 +4,5 @@ return [
 
     'brand'     => 'Brand',
     'category'  => 'Category',
+    'model'     => 'Model',
 ];

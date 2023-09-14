@@ -64,4 +64,7 @@ class User extends Authenticatable
     protected function categories(): HasMany{
         return $this->hasMany(Category::class);
     }
+    protected function models():HasMany{
+        return $this->hasMany(Model::class);
+    }
 }

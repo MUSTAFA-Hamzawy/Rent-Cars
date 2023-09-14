@@ -20,7 +20,7 @@ class CategoryController extends Controller
         'edit' => 'backend.category.edit',
     ];
 
-    private const TABLE_NAME = 'categories';
+    private const TABLE_NAME = "categories";
 
     /**
      * Display a listing of the resource.
@@ -29,8 +29,7 @@ class CategoryController extends Controller
     public function index(): View
     {
         $data = Category::orderBy('created_at')
-            ->with(['user' => function ($query){$query->select('id', 'name');}])
-            ->paginate(5);
+            ->paginate(self::PAGINATION_COUNT);
         return view(self::VIEWS['index'], ['data' => $data]);
     }
 
@@ -114,7 +113,7 @@ class CategoryController extends Controller
      */
     public function truncate(): RedirectResponse
     {
-        $query = `DELETE FROM `  . self::TABLE_NAME;
+        $query = "DELETE FROM "   . self::TABLE_NAME;
         DB::delete($query);
         toast(trans('general.success', ['attribute' => trans('modules.category')]),'success');
         return to_route('category.index');

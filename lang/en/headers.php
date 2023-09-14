@@ -15,4 +15,9 @@ return [
     'categories' => 'Categories',
     'add_category' => 'Add Category',
     'edit_category' => 'Edit Category',
+
+    'model' => 'Model',
+    'models' => 'Models',
+    'add_model' => 'Add Model',
+    'edit_model' => 'Edit Model',
 ];

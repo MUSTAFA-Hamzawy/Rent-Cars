@@ -57,6 +57,21 @@
                 </li>
             </ul>
         </li>
+        <li>
+            <a class="has-arrow" href="javascript:;">
+                <div class="parent-icon"><i class='bx bx-message-square-edit'></i>
+                </div>
+                <div class="menu-title">@lang('sidebar.models')</div>
+            </a>
+            <ul>
+                <li> <a href="{{route('model.create')}}"><i class="bx bx-right-arrow-alt"></i>@lang('sidebar.add_model')
+                    </a>
+                </li>
+                <li> <a href="{{route('model.index')}}"><i class="bx bx-right-arrow-alt"></i>@lang('sidebar.model_list')
+                    </a>
+                </li>
+            </ul>
+        </li>
     </ul>
     <!--end navigation-->
 </div>

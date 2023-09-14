@@ -61,9 +61,9 @@
                                 <div class="d-flex order-actions">
                                     <a href="{{route('category.edit', $item->id)}}" class=""><i
                                             class="bx bxs-edit"></i></a>
-                                    <a type="button" class="ms-3" data-bs-toggle="modal" data-bs-target="#exampleVerticallycenteredModal"><i class="bx bxs-trash"></i></a>
+                                    <a type="button" class="ms-3" data-bs-toggle="modal" data-bs-target="#exampleVerticallycenteredModal-{{$item->id}}"><i class="bx bxs-trash"></i></a>
                                     <!-- Confirmation modal  -->
-                                    <div class="modal fade" id="exampleVerticallycenteredModal" tabindex="-1"
+                                    <div class="modal fade" id="exampleVerticallycenteredModal-{{$item->id}}" tabindex="-1"
                                          style="display: none;" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
