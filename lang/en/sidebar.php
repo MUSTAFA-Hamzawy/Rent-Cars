@@ -22,5 +22,10 @@ return [
     // Models
     'models' => 'Models',
     'add_model' => 'Add Model',
-    'model_list' => 'Model List'
+    'model_list' => 'Model List',
+
+    // Payment Method
+    'payment_methods' => 'Payment Methods',
+    'add_payment_method' => 'Add Payment Method',
+    'payment_method_list' => 'Payment Method List',
 ];

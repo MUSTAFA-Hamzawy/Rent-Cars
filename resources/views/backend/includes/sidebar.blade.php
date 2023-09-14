@@ -72,6 +72,21 @@
                 </li>
             </ul>
         </li>
+        <li>
+            <a class="has-arrow" href="javascript:;">
+                <div class="parent-icon"><i class='bx bx-message-square-edit'></i>
+                </div>
+                <div class="menu-title">@lang('sidebar.payment_methods')</div>
+            </a>
+            <ul>
+                <li> <a href="{{route('payment_method.create')}}"><i class="bx bx-right-arrow-alt"></i>@lang('sidebar.add_payment_method')
+                    </a>
+                </li>
+                <li> <a href="{{route('payment_method.index')}}"><i class="bx bx-right-arrow-alt"></i>@lang('sidebar.payment_method_list')
+                    </a>
+                </li>
+            </ul>
+        </li>
     </ul>
     <!--end navigation-->
 </div>
