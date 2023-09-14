@@ -20,4 +20,9 @@ return [
     'models' => 'Models',
     'add_model' => 'Add Model',
     'edit_model' => 'Edit Model',
+
+    'payment_method' => 'Payment Method',
+    'payment_methods' => 'Payment Methods',
+    'add_payment_method' => 'Add Payment Method',
+    'edit_payment_method' => 'Edit Payment Method',
 ];

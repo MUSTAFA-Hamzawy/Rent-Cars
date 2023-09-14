@@ -6,4 +6,5 @@ return [
     'name_placeholder' => 'Enter Model Name',
     'add' => 'Add New Model',
     'slug' => 'Model Slug',
+    'payment_method'     => 'Payment Method',
 ];

@@ -23,4 +23,9 @@ return [
     'models' => 'الأنواع',
     'add_model' => 'إضافة نوع',
     'model_list' => 'قائمة الأنواع',
+
+    // Models
+    'payment_methods' => 'وسائل الدفع',
+    'add_payment_method' => 'إضافة وسيلة دفع',
+    'payment_method_list' => 'قائمة وسائل الدفع',
 ];
