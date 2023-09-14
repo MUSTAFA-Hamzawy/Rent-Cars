@@ -1,4 +1,4 @@
-@php use App\MyHelpers;use RealRashid\SweetAlert\Facades\Alert; @endphp
+@php use App\MyHelpers;@endphp
 @extends('backend.layouts.app')
 @section('page-title', trans('headers.brands'))
 @section('breadcrumb-title', trans('headers.brands'))

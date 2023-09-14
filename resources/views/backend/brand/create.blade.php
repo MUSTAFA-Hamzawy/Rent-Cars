@@ -53,7 +53,7 @@
                         <div class="row">
                             <label class="col-sm-3 col-form-label"></label>
                             <div class="col-sm-9">
-                                <input type="submit" class="btn btn-info px-5" value="Save"/>
+                                <input type="submit" class="btn btn-info px-5" value="{{trans('general.save')}}"/>
                             </div>
                         </div>
                     </form>
