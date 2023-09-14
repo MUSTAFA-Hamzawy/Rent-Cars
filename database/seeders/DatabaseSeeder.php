@@ -6,6 +6,7 @@ namespace Database\Seeders;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Model;
+use App\Models\PaymentMethod;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -20,5 +21,6 @@ class DatabaseSeeder extends Seeder
         Brand::factory(15)->create();
         Category::factory(15)->create();
         Model::factory(15)->create();
+        PaymentMethod::factory(15)->create();
     }
 }
