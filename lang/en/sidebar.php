@@ -18,4 +18,9 @@ return [
     'categories' => 'Categories',
     'add_category' => 'Add Category',
     'category_list' => 'Category List',
+
+    // Models
+    'models' => 'Models',
+    'add_model' => 'Add Model',
+    'model_list' => 'Model List'
 ];

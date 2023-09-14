@@ -15,4 +15,9 @@ return [
     'categories' => 'التصنيفات',
     'add_category' => 'إضافة تصنيف',
     'edit_category' => 'تعديل تصنيف',
+
+    'model' => 'النوع',
+    'models' => 'الأنواع',
+    'add_model' => 'إضافة نوع',
+    'edit_model' => 'تعديل نوع',
 ];

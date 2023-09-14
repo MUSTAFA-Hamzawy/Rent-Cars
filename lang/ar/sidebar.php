@@ -18,4 +18,9 @@ return [
     'categories' => 'التصنيفات',
     'add_category' => 'إضافة تصنيف',
     'category_list' => 'قائمة التصنيفات',
+
+    // Models
+    'models' => 'الأنواع',
+    'add_model' => 'إضافة نوع',
+    'model_list' => 'قائمة الأنواع',
 ];
