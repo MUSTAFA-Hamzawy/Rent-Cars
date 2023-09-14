@@ -11,6 +11,8 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
 
+    protected const PAGINATION_COUNT = 10;
+
     protected function handleResponse(bool $status, $message = 'Success'): JsonResponse{
             return $status ?
                 response()->json(['message' => $message]) :
