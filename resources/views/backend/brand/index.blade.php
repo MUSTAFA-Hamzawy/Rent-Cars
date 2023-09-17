@@ -1,14 +1,14 @@
 @php use App\MyHelpers;@endphp
 @extends('backend.layouts.app')
-@section('page-title', trans('headers.brands'))
-@section('breadcrumb-title', trans('headers.brands'))
+@section('page-title', trans('Brands'))
+@section('breadcrumb-title', trans('Brands'))
 @section('content')
     <div class="card">
         <div class="card-body">
             <div class="table-responsive">
                 <div class="ms-auto" style="margin-bottom: 20px">
                     <a href="{{route('brand.create')}}" class="btn btn-primary radius-30 mt-2 mt-lg-0">
-                        <i class="bx bxs-plus-square"></i>@lang('brand.add')</a>
+                        <i class="bx bxs-plus-square"></i>@lang('Add Brand')</a>
                 </div>
                 @if(count($data) > 0)
                     <div class="ms-auto" style="margin-bottom: 20px">
@@ -44,9 +44,9 @@
                 <table id="data_table" class="table table-striped table-bordered" style="width:100%">
                     <thead>
                     <tr>
-                        <th>@lang('brand.logo')</th>
-                        <th>@lang('brand.name')</th>
-                        <th>@lang('brand.slug')</th>
+                        <th>@lang('Brand Logo')</th>
+                        <th>@lang('Brand Name')</th>
+                        <th>@lang('Brand Slug')</th>
                         <th>@lang('general.created_at')</th>
                         <th>@lang('general.controls')</th>
                     </tr>
