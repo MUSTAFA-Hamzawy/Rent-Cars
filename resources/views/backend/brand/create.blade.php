@@ -3,36 +3,36 @@
     /*<!--notification js -->*/
     <link href="{{asset('assets/plugins/notifications/css/lobibox.min.css')}}" rel="stylesheet" />
 @endsection
-@section('page-title', trans('headers.add_brand'))
-@section('breadcrumb-title', trans('headers.brands'))
+@section('page-title', trans('Add Brand'))
+@section('breadcrumb-title', trans('Brands'))
 @section('breadcrumb-sub-titles')
     <li class="breadcrumb-item"><a href="{{route('brand.index')}}"><i class="bx
                 bx-home-alt"></i></a></li>
-    <li class="breadcrumb-item active" aria-current="page">@lang('headers.add_brand')</li>
+    <li class="breadcrumb-item active" aria-current="page">@lang('Add Brand')</li>
 @endsection
     @section('content')
         <div class="card">
             <div class="card-body">
                 <div class="border p-4 rounded">
                     <div class="card-title d-flex align-items-center">
-                        <h5 class="mb-0 text-info">@lang('headers.add_brand')</h5>
+                        <h5 class="mb-0 text-info">@lang('Add Brand')</h5>
                     </div>
                     <hr>
                     <form id="data-form" action="{{route('brand.store')}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row mb-3">
                             <label for="brand_name" class="col-sm-3 col-form-label">
-                                @lang('brand.name_placeholder')<span class="required-star">*</span>
+                                @lang('Enter Brand Name')<span class="required-star">*</span>
                             </label>
                             <div class="col-sm-9">
                                 <input name="brand_name" type="text" class="form-control" id="brand_name"
-                                       placeholder="{{trans('brand.name_placeholder')}}" required>
+                                       placeholder="{{trans('Enter Brand Name')}}" required>
                                 <small style="color: #e20000" class="error" id="brand_name-error"></small>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="mytextarea" class="col-sm-3 col-form-label">
-                                @lang('brand.description')
+                                @lang('Brand Description')
                             </label>
                             <div class="col-sm-9">
                                 <textarea id="mytextarea" name="brand_description"></textarea>

@@ -1,14 +1,13 @@
-@php use App\MyHelpers;@endphp
 @extends('backend.layouts.app')
-@section('page-title', trans('Brands'))
-@section('breadcrumb-title', trans('Brands'))
+@section('page-title', __('Branches'))
+@section('breadcrumb-title', __('Branches'))
 @section('content')
     <div class="card">
         <div class="card-body">
             <div class="table-responsive">
                 <div class="ms-auto" style="margin-bottom: 20px">
-                    <a href="{{route('brand.create')}}" class="btn btn-primary radius-30 mt-2 mt-lg-0">
-                        <i class="bx bxs-plus-square"></i>@lang('Add Brand')</a>
+                    <a href="{{route('branch.create')}}" class="btn btn-primary radius-30 mt-2 mt-lg-0">
+                        <i class="bx bxs-plus-square"></i>@lang('Add Branch')</a>
                 </div>
                 @if(count($data) > 0)
                     <div class="ms-auto" style="margin-bottom: 20px">
@@ -26,7 +25,7 @@
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
                                     </div>
-                                    <form method="post" action="{{route('brand.truncate')}}">
+                                    <form method="post" action="{{route('branch.truncate')}}">
                                         @csrf
                                         @method('DELETE')
                                         <div class="modal-footer">
@@ -44,9 +43,8 @@
                 <table id="data_table" class="table table-striped table-bordered" style="width:100%">
                     <thead>
                     <tr>
-                        <th>@lang('Brand Logo')</th>
-                        <th>@lang('Brand Name')</th>
-                        <th>@lang('Brand Slug')</th>
+                        <th>@lang('Branch Name')</th>
+                        <th>@lang('general.created_by')</th>
                         <th>@lang('general.created_at')</th>
                         <th>@lang('general.controls')</th>
                     </tr>
@@ -54,16 +52,12 @@
                     <tbody>
                     @foreach($data as $item)
                         <tr>
-                            <td style="width: 50px;">
-                                <img src="{{MyHelpers::imgPath("brand/$item->brand_logo")}}" alt="Brand Logo"
-                                     class="data-table-img">
-                            </td>
-                            <td style="max-width: 150px;">{{$item->brand_name}}</td>
-                            <td style="max-width: 150px;">{{$item->brand_slug}}</td>
+                            <td style="max-width: 150px;">{{$item->branch_name}}</td>
+                            <td style="width: 50px;">{{$item->user->name}}</td>
                             <td style="width: 50px;">{{$item->created_at->format('Y-m-d')}}</td>
                             <td style="width: 150px;">
                                 <div class="d-flex order-actions">
-                                    <a href="{{route('brand.edit', $item->id)}}" class=""><i
+                                    <a href="{{route('branch.edit', $item->id)}}" class=""><i
                                             class="bx bxs-edit"></i></a>
                                     <a type="button" class="ms-3" data-bs-toggle="modal" data-bs-target="#exampleVerticallycenteredModal-{{$item->id}}"><i class="bx bxs-trash"></i></a>
                                     <!-- Confirmation modal  -->
@@ -76,7 +70,7 @@
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                             aria-label="Close"></button>
                                                 </div>
-                                                <form method="post" action="{{route('brand.destroy', $item->id)}}">
+                                                <form method="post" action="{{route('branch.destroy', $item->id)}}">
                                                     @csrf
                                                     @method('DELETE')
                                                     <div class="modal-footer">
@@ -89,7 +83,7 @@
                                         </div>
                                     </div>
                                     <!-- End Confirmation modal  -->
-                                    <a href="{{route('brand.show', $item->id)}}" class="ms-3"><i
+                                    <a href="{{route('branch.show', $item->id)}}" class="ms-3"><i
                                             class="lni lni-eye"></i></a>
                                 </div>
                             </td>

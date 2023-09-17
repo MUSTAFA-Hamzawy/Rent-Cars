@@ -1,53 +1,83 @@
+@php
+enum DaysOfWeek : int{
+  case saturday = 1;
+  case sunday   = 2;
+  case monday   = 3;
+  case tuesday  = 4;
+  case wendesay = 5;
+  case thursday = 6;
+  case friday   = 7;
+}
+
+@endphp
 @extends('backend.layouts.app')
 @section('css')
     /*<!--notification js -->*/
     <link href="{{asset('assets/plugins/notifications/css/lobibox.min.css')}}" rel="stylesheet" />
 @endsection
-@section('page-title', trans('Edit Brand'))
-@section('breadcrumb-title', trans('Brands'))
+@section('page-title', __('Add Branch'))
+@section('breadcrumb-title', __('Branches'))
 @section('breadcrumb-sub-titles')
-    <li class="breadcrumb-item"><a href="{{route('brand.index')}}"><i class="bx
-                bx-home-alt"></i></a></li>
-    <li class="breadcrumb-item active" aria-current="page">@lang('Edit Brand')</li>
+    <li class="breadcrumb-item"><a href="{{route('branch.index')}}"><i class="bx bx-home-alt"></i></a></li>
+    <li class="breadcrumb-item active" aria-current="page">@lang('Add Branch')</li>
 @endsection
 @section('content')
     <div class="card">
         <div class="card-body">
             <div class="border p-4 rounded">
                 <div class="card-title d-flex align-items-center">
-                    <h5 class="mb-0 text-info">@lang('Edit Brand')</h5>
+                    <h5 class="mb-0 text-info">@lang('Add Branch')</h5>
                 </div>
                 <hr>
-                <form id="data-form" method="POST" enctype="multipart/form-data">
+                <form id="data-form" action="{{route('branch.store')}}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    @method('PUT')
                     <div class="row mb-3">
-                        <label for="brand_name" class="col-sm-3 col-form-label">
-                            @lang('Brand Name')<span class="required-star">*</span>
+                        <label for="branch_name" class="col-sm-3 col-form-label">
+                            @lang('Branch Name')<span class="required-star">*</span>
                         </label>
                         <div class="col-sm-9">
-                            <input name="brand_name" type="text" class="form-control" id="brand_name" value="{{$item->brand_name}}" required>
-                            <small style="color: #e20000" class="error" id="brand_name-error"></small>
+                            <input name="branch_name" type="text" class="form-control" id="branch_name" placeholder="{{__('Enter Branch Name')}}" required>
+                            <small style="color: #e20000" class="error" id="branch_name-error"></small>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row mb-3">
+                        <label class="col-sm-3 col-form-label">@lang('Payment Methods')</label>
+                        <div class="col-sm-9">
+                            @foreach($paymentMethods as $method)
+                                <div class="form-check form-switch">
+                                    <input name="payment_methods[]" class="form-check-input" type="checkbox" value="{{$method->id}}">
+                                    <label class="form-check-label">{{ucfirst($method->method_name)}}</label>
+                                </div>
+                            @endforeach
+                            <small style="color: #e20000" class="error" id="payment_methods-error"></small>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row mb-3">
+                        <label class="col-sm-3 col-form-label">@lang('Work Days')<span class="required-star">*</span></label>
+                        <div class="col-sm-9">
+                            @foreach(DaysOfWeek::cases() as $day)
+                                <div class="form-check form-switch">
+                                    <input name="work_days[]" class="form-check-input" type="checkbox" value="{{$day->value}}">
+                                    <label class="form-check-label">{{ucfirst($day->name)}}</label>
+                                </div>
+                            @endforeach
+                            <small style="color: #e20000" class="error" id="work_days-error"></small>
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label for="mytextarea" class="col-sm-3 col-form-label">
-                            @lang('Brand Description')
-                        </label>
+                        <label class="col-sm-3 col-form-label">@lang('Starting Work Hour')<span class="required-star">*</span></label>
                         <div class="col-sm-9">
-                            <textarea id="mytextarea" name="brand_description">{{$item->brand_description}}</textarea>
+                            <input name="work_hours_start" type="time" class="form-control" required>
+                            <small style="color: #e20000" class="error" id="work_hours_start-error"></small>
                         </div>
-                        <small style="color: #e20000" class="error" id="brand_description-error"></small>
                     </div>
                     <div class="row mb-3">
-                        <label for="upload_image" class="col-sm-3 col-form-label">
-                            @lang('general.upload_logo')<span class="required-star">*</span>
-                        </label>
+                        <label class="col-sm-3 col-form-label">@lang('Closing Work Hour')<span class="required-star">*</span></label>
                         <div class="col-sm-9">
-                            <input name="brand_logo" id="upload_image" class="form-control" type="file" >
-                            <small style="color: #e20000" class="error" id="brand_logo-error"></small>
-                            <img id="image_preview" src="" alt="Preview Image"
-                                 style="width: 200px; height:170px;display: none; margin-top: 10px">
+                            <input name="work_hours_end" type="time" class="form-control" required>
+                            <small style="color: #e20000" class="error" id="work_hours_end-error"></small>
                         </div>
                     </div>
                     <div class="row">
@@ -67,25 +97,6 @@
     <script src="{{asset('assets')}}/plugins/notifications/js/notifications.min.js"></script>
     <script src="{{asset('assets')}}/plugins/notifications/js/notification-custom-script.js"></script>
 
-    <script src="{{asset('assets')}}/js/tinymce.min.js"></script>
-    <script>
-        tinymce.init({
-            selector: '#mytextarea'
-        });
-    </script>
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#upload_image').change(function (e) {
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                    $('#image_preview').attr('src', e.target.result);
-                    $('#image_preview').show(); // Show the image
-                }
-                reader.readAsDataURL(e.target.files[0]);
-            });
-        });
-    </script>
 @endsection
 
 @section('ajax')
@@ -102,19 +113,17 @@
                 });
 
                 var formData = new FormData(this);
+
                 $.ajax({
-                    url: "{{ route('brand.update', $item->id)}}",
+                    url: "{{ route('branch.store') }}",
                     method: 'POST',
                     data: formData,
-                    headers: {
-                        "X-CSRF-TOKEN": "{{ csrf_token() }}" // Set the CSRF token in the headers
-                    },
                     dataType: 'json',
                     contentType: false, // Important: set to false when sending FormData
                     processData: false, // Important: set to false when sending FormData
                     success: function (response) {
                         // Reset the form
-                        $('#upload_image').val('');
+                        $('#data-form')[0].reset();
                         $('#image_preview').attr('src', null);
                         $('#image_preview').hide();
 
@@ -137,7 +146,7 @@
                             if (jsonResponse && jsonResponse.message) {
                                 Swal.fire({
                                     icon: 'error',
-                                    title: "{{trans('general.fail')}}",
+                                    title: "{{trans('general.failed')}}",
                                     text: jsonResponse.message,
                                     showCancelButton: false,
                                     confirmButtonText: 'OK',

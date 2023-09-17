@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('branch_available_payment_methods', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('branch_id')->unique()->constrained('branches')
+            $table->foreignId('branch_id')->constrained('branches')
                 ->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreignId('method_id')->unique()->constrained('payment_methods')
+            $table->foreignId('method_id')->constrained('payment_methods')
                 ->cascadeOnDelete()->cascadeOnDelete();
 
         });

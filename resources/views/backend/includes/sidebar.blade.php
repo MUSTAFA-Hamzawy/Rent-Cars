@@ -87,6 +87,21 @@
                 </li>
             </ul>
         </li>
+        <li>
+            <a class="has-arrow" href="javascript:;">
+                <div class="parent-icon"><i class='bx bx-message-square-edit'></i>
+                </div>
+                <div class="menu-title">@lang('sidebar.branch')</div>
+            </a>
+            <ul>
+                <li> <a href="{{route('branch.create')}}"><i class="bx bx-right-arrow-alt"></i>@lang('Add Branch')
+                    </a>
+                </li>
+                <li> <a href="{{route('branch.index')}}"><i class="bx bx-right-arrow-alt"></i>@lang('Branch List')
+                    </a>
+                </li>
+            </ul>
+        </li>
     </ul>
     <!--end navigation-->
 </div>
