@@ -1,0 +1,31 @@
+{
+    "Remove All" : "حذف الكل",
+    "Payment Methods": "طرق الدفع",
+
+    "Brands" : "البرندات",
+    "Brand List" : "قائمة البرندات",
+    "Add Brand" : "إضافة براند",
+    "Edit Brand" : "تعديل براند",
+    "Brand Name" : "إسم البراند",
+    "Brand Slug" : "رمز البراند",
+    "Brand Logo" : "صورة البراند",
+    "Brand Description" : "نبذه عن البراند",
+    "Enter Brand Name" : "أدخل إسم البراند",
+
+    "Branches" : "الفروع",
+    "Branch List" : " قائمة الفروع",
+    "Add Branch": "إضافة فرع",
+    "Edit Branch": "تعديل فرع",
+    "Branch Name": "إسم الفرع",
+    "Enter Branch Name": "أدخل إسم الفرع",
+    "Work Days": "أيام العمل",
+    "Starting Work Hour": "بداية يوم العمل",
+    "Closing Work Hour": "نهاية يوم العمل"
+}
+
+
+
+
+
+
+
