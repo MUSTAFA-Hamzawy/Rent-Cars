@@ -67,4 +67,7 @@ class User extends Authenticatable
     protected function models():HasMany{
         return $this->hasMany(Model::class);
     }
+    protected function branches():HasMany{
+        return $this->hasMany(Branch::class);
+    }
 }
