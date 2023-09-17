@@ -40,7 +40,8 @@ class RouteServiceProvider extends ServiceProvider
                 ->group(base_path('routes/brand.php'))
                 ->group(base_path('routes/category.php'))
                 ->group(base_path('routes/model.php'))
-                ->group(base_path('routes/payment_method.php'));
+                ->group(base_path('routes/payment_method.php'))
+                ->group(base_path('routes/branch.php'));
         });
     }
 }
