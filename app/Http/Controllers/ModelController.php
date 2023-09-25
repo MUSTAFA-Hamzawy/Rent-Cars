@@ -63,7 +63,7 @@ class ModelController extends Controller
      */
     public function show(Model $model)
     {
-        //
+        return view(self::VIEWS['show'], ['item' => $model]);
     }
 
     /**

@@ -50,7 +50,7 @@
                     <tbody>
                     @foreach($data as $item)
                         <tr>
-                            <td style="max-width: 150px;">{{$item->model_name}}</td>
+                            <td style="max-width: 150px;"><a href="{{route('model.show', $item->id)}}">{{$item->model_name}}</a></td>
                             <td style="max-width: 150px;">{{$item->model_slug}}</td>
                             <td style="width: 50px;">{{$item->user->name}}</td>
                             <td style="width: 50px;">{{$item->created_at->format('Y-m-d')}}</td>

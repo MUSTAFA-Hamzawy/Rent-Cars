@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\BrandRequest;
 use App\Models\Brand;
+use App\Models\Car;
 use App\MyHelpers;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
@@ -68,7 +69,7 @@ class BrandController extends Controller
      */
     public function show(Brand $brand)
     {
-        //
+        return view(self::VIEWS['show'], ['item'=>$brand]);
     }
 
     /**
