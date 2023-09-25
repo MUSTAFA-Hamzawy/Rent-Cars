@@ -77,5 +77,9 @@ return [
     'media' => [
         'images' => 'app/public/media/images/'
     ],
+    // These files are relative to assets
+    'assets' => [
+        'images' => 'storage/media/images/'
+    ],
 
 ];

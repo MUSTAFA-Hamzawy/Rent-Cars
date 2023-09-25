@@ -28,6 +28,8 @@ return new class extends Migration
                 ->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('model_id')->constrained('models')
                 ->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('brand_id')->constrained('brands')
+                ->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('created_by')->constrained('users')
                 ->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();

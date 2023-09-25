@@ -58,7 +58,7 @@
                                 <img src="{{MyHelpers::imgPath("brand/$item->brand_logo")}}" alt="Brand Logo"
                                      class="data-table-img">
                             </td>
-                            <td style="max-width: 150px;">{{$item->brand_name}}</td>
+                            <td style="max-width: 150px;"><a href="{{route('brand.show', $item->id)}}">{{$item->brand_name}}</a></td>
                             <td style="max-width: 150px;">{{$item->brand_slug}}</td>
                             <td style="width: 50px;">{{$item->created_at->format('Y-m-d')}}</td>
                             <td style="width: 150px;">

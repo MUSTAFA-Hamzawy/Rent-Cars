@@ -70,4 +70,7 @@ class User extends Authenticatable
     protected function branches():HasMany{
         return $this->hasMany(Branch::class);
     }
+    protected function car(): HasMany{
+        return $this->hasMany(Car::class);
+    }
 }
