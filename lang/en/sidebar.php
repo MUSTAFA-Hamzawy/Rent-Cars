@@ -19,6 +19,9 @@ return [
     'add_category' => 'Add Category',
     'category_list' => 'Category List',
 
+    // Branch
+    'branch' => 'Branches',
+
     // Models
     'models' => 'Models',
     'add_model' => 'Add Model',

@@ -102,6 +102,21 @@
                 </li>
             </ul>
         </li>
+        <li>
+            <a class="has-arrow" href="javascript:;">
+                <div class="parent-icon"><i class='bx bx-message-square-edit'></i>
+                </div>
+                <div class="menu-title">@lang('Cars')</div>
+            </a>
+            <ul>
+                <li> <a href="{{route('car.create')}}"><i class="bx bx-right-arrow-alt"></i>@lang('Add Car')
+                    </a>
+                </li>
+                <li> <a href="{{route('car.index')}}"><i class="bx bx-right-arrow-alt"></i>@lang('Car List')
+                    </a>
+                </li>
+            </ul>
+        </li>
     </ul>
     <!--end navigation-->
 </div>

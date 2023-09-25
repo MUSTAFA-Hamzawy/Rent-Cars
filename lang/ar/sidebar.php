@@ -24,6 +24,9 @@ return [
     'add_model' => 'إضافة نوع',
     'model_list' => 'قائمة الأنواع',
 
+    // Branch
+    'branch' => 'الفروع',
+
     // Models
     'payment_methods' => 'وسائل الدفع',
     'add_payment_method' => 'إضافة وسيلة دفع',

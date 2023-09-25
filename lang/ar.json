@@ -1,9 +1,14 @@
 {
+    "Yes" : "نعم",
+    "No" : "لا",
+    "Edit" : "تعديل",
     "Remove All" : "حذف الكل",
     "Payment Methods": "طرق الدفع",
 
     "Brands" : "البرندات",
     "Brand List" : "قائمة البرندات",
+    "Brand info" : "تفاصيل البراند",
+    "Brand Cars" : "سيارات البراند",
     "Add Brand" : "إضافة براند",
     "Edit Brand" : "تعديل براند",
     "Brand Name" : "إسم البراند",
@@ -14,13 +19,41 @@
 
     "Branches" : "الفروع",
     "Branch List" : " قائمة الفروع",
+    "Branch info" : " تفاصيل الفروع",
+    "Branch Cars" : "السيارات المتواجده فى الفروع",
     "Add Branch": "إضافة فرع",
     "Edit Branch": "تعديل فرع",
     "Branch Name": "إسم الفرع",
     "Enter Branch Name": "أدخل إسم الفرع",
     "Work Days": "أيام العمل",
     "Starting Work Hour": "بداية يوم العمل",
-    "Closing Work Hour": "نهاية يوم العمل"
+    "Closing Work Hour": "نهاية يوم العمل",
+
+    "Cars" : "السيارات",
+    "Car List" : "قائمة السيارات",
+    "Add Car" : "إضافة سيارة",
+    "Edit Car" : "تعديل سيارة",
+    "Car Description" : "نبذه عن السيارة",
+
+    "Car Title" :  "إسم السيارة",
+    "Car Year" : "سنة الانتاج",
+    "Price Per Day" :  "سعر اليوم",
+    "Car Color" : "لون السيارة",
+    "Distance Limit" :  "أقصى مسافة",
+    "Branch" : "الفرع",
+    "Brand" :  "البراند",
+    "Model" : "المودل",
+    "Model Name" : "اسم المودل",
+    "Model info" : "تفاصيل المودل",
+    "Model Cars" : "سيارات المودل",
+    "Available" :  "متوفرة",
+    "No Description" :  "لا يوجد ",
+    "Created" :  "تم إنشاءه ",
+    "Last Updated" :  "آخر تحديث ",
+
+    "Category Name" : "اسم التصنيف",
+    "Category info" : "تفاصيل التصنيف",
+    "Category Cars" : "سيارات التصنيف"
 }
 
 
