@@ -78,7 +78,7 @@ class BranchController extends Controller
      */
     public function show(Branch $branch)
     {
-        //
+        return view(self::VIEWS['show'], ['item' => $branch]);
     }
 
     /**
