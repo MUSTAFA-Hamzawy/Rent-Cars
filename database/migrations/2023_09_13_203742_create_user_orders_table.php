@@ -23,8 +23,6 @@ return new class extends Migration
                 ->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('car_id')->constrained('cars')
                 ->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreignId('branch_id')->comment('For the pickup location')
-                ->constrained('branches')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('payment_method_id')->constrained('payment_methods')
                 ->cascadeOnUpdate()->cascadeOnDelete();
             $table->timestamps();
