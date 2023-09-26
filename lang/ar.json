@@ -53,7 +53,17 @@
 
     "Category Name" : "اسم التصنيف",
     "Category info" : "تفاصيل التصنيف",
-    "Category Cars" : "سيارات التصنيف"
+    "Category Cars" : "سيارات التصنيف",
+
+    "Orders": "الطلبات",
+    "ID": "رقم الطلب",
+    "Customer": "العميل",
+    "Car": "السيارة",
+    "Payment Method": "طريقة الدفع",
+    "Total Cost": "إجمالى السعر",
+    "Status": "حالة الطلب",
+    "Start Date": "تاريخ البدء",
+    "End Date": "تاريخ الإنتهاء"
 }
 
 

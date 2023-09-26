@@ -21,6 +21,11 @@
 
                                 <dt class="col-sm-3">@lang('Last Updated')</dt>
                                 <dd class="col-sm-9">{{$item->updated_at->diffForHumans()}}</dd>
+
+                                <dt class="col-sm-3">@lang('Payment Methods')</dt>
+                                @foreach($item->payment_methods as $method)
+                                    <span class="col-sm-1">{{$method->method_name}}</span>
+                                @endforeach
                             </dl>
 
                             <div class="d-flex gap-3 mt-3">

@@ -117,6 +117,13 @@
                 </li>
             </ul>
         </li>
+        <li>
+            <a href="{{route('order.index')}}">
+                <div class="parent-icon"><i class='bx bx-message-square-edit'></i>
+                </div>
+                <div class="menu-title">@lang('Orders')</div>
+            </a>
+        </li>
     </ul>
     <!--end navigation-->
 </div>
