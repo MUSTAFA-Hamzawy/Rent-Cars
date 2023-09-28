@@ -27,6 +27,7 @@ class BranchRequest extends FormRequest
     {
         return [
             'branch_name' => ['required','string', 'max:200', Rule::unique('branches')->ignore($this->route('branch'))],
+            'branch_address' => ['required','string'],
             'work_days'   => ['required', 'array'],
             'payment_methods'   => ['array'],
             'work_hours_start'  => ['required', 'date_format:H:i'],

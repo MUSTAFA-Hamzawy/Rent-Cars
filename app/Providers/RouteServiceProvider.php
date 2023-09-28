@@ -32,7 +32,14 @@ class RouteServiceProvider extends ServiceProvider
         $this->routes(function () {
             Route::middleware('api')
                 ->prefix('api')
-                ->group(base_path('routes/api.php'));
+                ->group(base_path('routes/api/api.php'))
+                ->group(base_path('routes/api/user.php'))
+                ->group(base_path('routes/api/brand.php'))
+                ->group(base_path('routes/api/branch.php'))
+                ->group(base_path('routes/api/category.php'))
+                ->group(base_path('routes/api/car.php'))
+                ->group(base_path('routes/api/search.php'))
+                ->group(base_path('routes/api/order.php'));
 
             Route::middleware('web')
                 ->prefix(LaravelLocalization::setLocale())
