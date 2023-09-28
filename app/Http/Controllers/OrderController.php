@@ -16,8 +16,6 @@ class OrderController extends Controller
     const VALIDATION_RULES = [
         "order_status" => ['required', 'numeric', 'min:-1', 'max:1'],
         "total_cost" => ['required', 'numeric'],
-        "start_date" => ['required', 'date'],
-        "end_date" => ['required', 'date'],
     ];
     private const TABLE_NAME = 'orders';
     private const VIEWS = [
@@ -59,7 +57,7 @@ class OrderController extends Controller
         // update
         $updated = Order::where('id', $order->id)->update($data);
         return $this->handleResponse(! is_null($updated), trans('general.updated', ['attribute' => trans('modules.order')]));
-        // TODO: send the customer email with the new editted order
+        // TODO: send the customer email with the new edited order
     }
 
     /**
@@ -69,8 +67,10 @@ class OrderController extends Controller
      */
     public function destroy(Order $order): RedirectResponse
     {
+        $order->car->is_available = 1;
+        $order->car->save();
         $order->delete();
-        toast(trans('general.failed', ['attribute' => trans('modules.order')]),'error');
+        toast(trans('general.success', ['attribute' => trans('modules.order')]),'success');
         return to_route('order.index');
     }
 

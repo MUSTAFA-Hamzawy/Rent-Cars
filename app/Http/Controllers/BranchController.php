@@ -60,6 +60,7 @@ class BranchController extends Controller
 
         $record = [
             'branch_name' => $request->input('branch_name'),
+            'branch_address' => $request->input('branch_address'),
             'available_times' => json_encode($availableTimes),
             'created_by'    => Auth::user()->id,
         ];
@@ -109,6 +110,7 @@ class BranchController extends Controller
         ];
         $record = [
             'branch_name' => $request->input('branch_name'),
+            'branch_address' => $request->input('branch_address'),
             'available_times' => json_encode($availableTimes),
         ];
 
