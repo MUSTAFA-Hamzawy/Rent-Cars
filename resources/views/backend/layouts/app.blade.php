@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="en">
+@php $dir = "ltr"; if(app()->getLocale() == 'ar') $dir = "rtl";   @endphp
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{$dir}}">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">

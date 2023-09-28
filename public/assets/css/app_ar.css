@@ -175,7 +175,7 @@ a {
     position: relative;
     display: flex;
     align-items: center;
-    justify-content: left;
+    justify-content: right;
     padding: 8px 15px;
     font-size: 15px;
     color: #5f5f5f;
@@ -2146,6 +2146,7 @@ input.search-control-2::placeholder {
 }
 
 .switcher-wrapper {
+    display: none;
     width: 280px;
     height: 100%;
     position: fixed;
