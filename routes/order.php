@@ -1,24 +1,21 @@
 <?php
 
-use App\Http\Controllers\PaymentMethodController;
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
-| Payment Method Routes
+| Order Routes
 |--------------------------------------------------------------------------
 */
 //
-
-
 Route::middleware(['auth'])->group(function (){
-    Route::delete('payment_method/remove_all', [PaymentMethodController::class, 'truncate'])->name('payment_method.truncate');
-    Route::resource('payment_method', PaymentMethodController::class)
-        ->except('show')
+    Route::delete('order/remove_all', [OrderController::class, 'truncate'])->name('order.truncate');
+    Route::resource('order', OrderController::class)
+        ->only(['index', 'edit', 'update', 'destroy'])
         ->missing(function (){
             $alertPosition = app()->getLocale() == 'en' ? 'top-right' : 'top-start';
             toast(trans('general.page_not_exist'),'error')->position($alertPosition);;
-            return to_route('payment_method.index');
+            return to_route('order.index');
         });
-
 });
