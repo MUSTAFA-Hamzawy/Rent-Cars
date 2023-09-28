@@ -44,6 +44,7 @@
                     <thead>
                     <tr>
                         <th>@lang('Branch Name')</th>
+                        <th>@lang('Branch Address')</th>
                         <th>@lang('general.created_by')</th>
                         <th>@lang('general.created_at')</th>
                         <th>@lang('general.controls')</th>
@@ -53,6 +54,7 @@
                     @foreach($data as $item)
                         <tr>
                             <td style="max-width: 150px;"><a href="{{route('branch.show', $item->id)}}">{{$item->branch_name}}</a></td>
+                            <td style="max-width: 150px;">{{$item->branch_address}}</td>
                             <td style="width: 50px;">{{$item->user->name}}</td>
                             <td style="width: 50px;">{{$item->created_at->format('Y-m-d')}}</td>
                             <td style="width: 150px;">

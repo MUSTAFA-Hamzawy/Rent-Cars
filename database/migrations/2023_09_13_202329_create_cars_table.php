@@ -16,10 +16,10 @@ return new class extends Migration
             $table->char('car_title');
             $table->integer('distance_limit', false, true)
                 ->nullable()->comment('in Kilo Meters');
-            $table->smallInteger('fees_for_extra_KM', false, true)->nullable();
+            $table->float('fees_for_extra_KM', false, true)->nullable();
             $table->smallInteger('year', false, true);
             $table->char('car_color', '50');
-            $table->smallInteger('price_per_day');
+            $table->float('price_per_day');
             $table->json('car_images');
             $table->boolean('is_available')->default(1);
             $table->foreignId('branch_id')->constrained('branches')

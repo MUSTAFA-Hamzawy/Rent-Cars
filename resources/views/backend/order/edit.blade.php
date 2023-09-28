@@ -45,25 +45,6 @@
                         </div>
                     </div>
 
-                    <div class="row mb-3">
-                        <label for="start_date" class="col-sm-3 col-form-label">
-                            @lang('Start Date')<span class="required-star">*</span>
-                        </label>
-                        <div class="col-sm-9">
-                            <input name="start_date" type="date" class="form-control" id="start_date" value="{{$item->start_date}}" required>
-                            <small style="color: #e20000" class="error" id="start_date-error"></small>
-                        </div>
-                    </div>
-
-                    <div class="row mb-3">
-                        <label for="end_date" class="col-sm-3 col-form-label">
-                            @lang('End Date')<span class="required-star">*</span>
-                        </label>
-                        <div class="col-sm-9">
-                            <input name="end_date" type="date" class="form-control" id="end_date" value="{{$item->end_date}}" required>
-                            <small style="color: #e20000" class="error" id="end_date-error"></small>
-                        </div>
-                    </div>
                     <div class="row">
                         <label class="col-sm-3 col-form-label"></label>
                         <div class="col-sm-9">

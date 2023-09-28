@@ -40,6 +40,17 @@ enum DaysOfWeek : int{
                             <small style="color: #e20000" class="error" id="branch_name-error"></small>
                         </div>
                     </div>
+
+                    <div class="row mb-3">
+                        <label for="branch_address" class="col-sm-3 col-form-label">
+                            @lang('Branch Address')<span class="required-star">*</span>
+                        </label>
+                        <div class="col-sm-9">
+                            <input name="branch_address" type="text" class="form-control" id="branch_address"
+                                   placeholder="{{trans('Branch Address')}}" required>
+                            <small style="color: #e20000" class="error" id="branch_address-error"></small>
+                        </div>
+                    </div>
                     <hr>
                     <div class="row mb-3">
                         <label class="col-sm-3 col-form-label">@lang('Payment Methods')</label>
