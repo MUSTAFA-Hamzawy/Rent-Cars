@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\StatsController;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -25,11 +26,5 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard2', function () {
-        return view('dashboard');
-    })->name('dashboard');
-
-    Route::get('/dashboard', function () {
-        return view('backend.dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', [StatsController::class, '__invoke'])->name('dashboard');
 });
