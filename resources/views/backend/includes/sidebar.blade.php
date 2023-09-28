@@ -6,17 +6,21 @@
         <div>
             <h4 class="logo-text">{{env('APP_NAME')}}</h4>
         </div>
-        <div class="toggle-icon ms-auto"><i class='bx bx-arrow-to-left'></i>
-        </div>
+        @if(app()->getLocale() == 'en')
+            <div class="toggle-icon ms-auto"><i class='bx bx-arrow-to-left'></i>
+            </div>
+        @endif
+
     </div>
     <!--navigation-->
     <ul class="metismenu" id="menu">
         <li class="menu-label">@lang('sidebar.user')</li>
         <li>
             <a href="{{route('dashboard')}}">
-                <div class="parent-icon"><i class='bx bx-home-circle'></i>
+                <div class="parent-icon">
+                    <i class='bx bx-home-circle'></i>
                 </div>
-                <div class="menu-title">@lang('sidebar.dashboard')</div>
+                <div class='menu-title'>@lang('sidebar.dashboard')</div>
             </a>
         </li>
         <li>
@@ -29,7 +33,7 @@
         <li class="menu-label">@lang('sidebar.control_panel')</li>
         <li>
             <a class="has-arrow" href="javascript:;">
-                <div class="parent-icon"><i class='bx bx-message-square-edit'></i>
+                <div class="parent-icon"><i class='lni lni-apple'></i>
                 </div>
                 <div class="menu-title">@lang('sidebar.brands')</div>
             </a>
@@ -59,7 +63,7 @@
         </li>
         <li>
             <a class="has-arrow" href="javascript:;">
-                <div class="parent-icon"><i class='bx bx-message-square-edit'></i>
+                <div class="parent-icon"><i class='lni lni-cake'></i>
                 </div>
                 <div class="menu-title">@lang('sidebar.models')</div>
             </a>
@@ -74,7 +78,7 @@
         </li>
         <li>
             <a class="has-arrow" href="javascript:;">
-                <div class="parent-icon"><i class='bx bx-message-square-edit'></i>
+                <div class="parent-icon"><i class='lni lni-amazon-pay'></i>
                 </div>
                 <div class="menu-title">@lang('sidebar.payment_methods')</div>
             </a>
@@ -89,7 +93,7 @@
         </li>
         <li>
             <a class="has-arrow" href="javascript:;">
-                <div class="parent-icon"><i class='bx bx-message-square-edit'></i>
+                <div class="parent-icon"><i class='lni lni-apartment'></i>
                 </div>
                 <div class="menu-title">@lang('sidebar.branch')</div>
             </a>
@@ -104,7 +108,7 @@
         </li>
         <li>
             <a class="has-arrow" href="javascript:;">
-                <div class="parent-icon"><i class='bx bx-message-square-edit'></i>
+                <div class="parent-icon"><i class='lni lni-car-alt'></i>
                 </div>
                 <div class="menu-title">@lang('Cars')</div>
             </a>
@@ -119,7 +123,7 @@
         </li>
         <li>
             <a href="{{route('order.index')}}">
-                <div class="parent-icon"><i class='bx bx-message-square-edit'></i>
+                <div class="parent-icon"><i class='lni lni-cart-full'></i>
                 </div>
                 <div class="menu-title">@lang('Orders')</div>
             </a>
