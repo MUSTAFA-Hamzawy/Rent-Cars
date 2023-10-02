@@ -37,6 +37,7 @@
         }
     </style>
     <title>@yield('page-title')</title>
+
 </head>
 
 <body>
@@ -173,6 +174,97 @@
 @include('backend.includes.js')
 @yield('ajax')
 @yield('js')
+
+<script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+
+<script>
+
+    // Enable pusher logging - don't include this in production
+    Pusher.logToConsole = true;
+
+    var pusher = new Pusher("{{env('PUSHER_APP_KEY', 'd62adadb2723d976eec5')}}", {
+        cluster: '{{env('PUSHER_APP_CLUSTER', 'ap2')}}',
+        encrypted: true,
+    });
+
+    var privateChannel = pusher.subscribe('admin-order-notification-channel');
+    privateChannel.bind('order-created-event', function(data) {
+        $.ajax({
+            type: "POST",
+            url: "{{route('get-user-notifications')}}",
+            headers:{
+                "X-CSRF-TOKEN":"{{csrf_token()}}"
+            },
+            success: function(data) {
+
+                showAlertCount(data.unreadNotificationsCount);
+                renderUserNotifications(data.notifications);
+            },
+            error: function(xhr, status, error) {
+            }
+        });
+    });
+
+    function showAlertCount(count){
+        if (count > 0) {
+            // Check the data count and show/hide the alert-count span
+            const alertCountSpan = $(".alert-count");
+
+            // Check if .alert-count exists and remove it
+            if (alertCountSpan.length > 0) {
+                alertCountSpan.remove();
+            }
+            // Create a new alert-count span
+            const newAlertCountSpan = $("<span>").addClass("alert-count");
+            newAlertCountSpan.text(count);
+            newAlertCountSpan.show();
+            $("#notification-count-parent").append(newAlertCountSpan);
+        }
+    }
+
+    function renderUserNotifications(notifications){
+        const notificationsContainer = $("#notifications-container");
+        notificationsContainer.empty();
+
+        // Loop through the notifications data and generate HTML for each notification
+        notifications.forEach(function (notification) {
+            const notificationElement = $("<p>").addClass("dropdown-item");
+            const formattedCreatedAt = moment(notification.created_at).fromNow();
+            const notificationContent = `
+                <div class="d-flex align-items-center">
+                    <div class="notify bg-light-primary text-primary"><i class="bx bx-group"></i></div>
+                    <div class="flex-grow-1">
+                        <h6 class="msg-name">${notification.data.title}<span class="msg-time float-end">${formattedCreatedAt}</span></h6>
+                        <p class="msg-info">${notification.data.content}</p>
+                    </div>
+                </div>
+            `;
+            notificationElement.html(notificationContent);
+            notificationsContainer.append(notificationElement);
+        });
+    }
+</script>
+
+<script>
+    $(document).ready(function() {
+        $("#read-all-notifications").click(function(event) {
+            event.preventDefault();
+
+            // Perform an AJAX GET request
+            $.ajax({
+                type: "GET",
+                url: "{{route('read-all-notification')}}",
+                success: function(data) {
+                    let alertCount = document.querySelector('.alert-count');
+                    alertCount.style.display = "none";
+                },
+                error: function(xhr, status, error) {
+                }
+            });
+        });
+    });
+</script>
 </body>
 
 </html>

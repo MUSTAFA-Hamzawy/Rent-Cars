@@ -6,4 +6,5 @@ return [
     'category'  => 'التصنيف',
     'model'     => 'النوع',
     'payment_method'     => 'وسيلة الدفع',
+    'order'     => 'الطلب',
 ];

@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\StatsController;
+use Illuminate\Notifications\DatabaseNotification;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -27,4 +29,18 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/dashboard', [StatsController::class, '__invoke'])->name('dashboard');
+
+    // mark-notification-as-read
+    Route::get('/read_notification/{notification}', function(DatabaseNotification $notification){
+        $notification->markAsRead();
+        return to_route('order.index');
+    })->name('read-order-notification');
+
+    Route::get('/read_all_notifications', function(){
+        Auth::user()->unreadNotifications->markAsRead();
+    })->name('read-all-notification');
+
+    Route::post('/all_notifications', function (){
+        return response(Auth::user()->notifications);
+    })->name('get-user-notifications');
 });

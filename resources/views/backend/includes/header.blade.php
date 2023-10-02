@@ -1,10 +1,13 @@
-@php use Illuminate\Support\Facades\Auth; @endphp
+@php use Illuminate\Support\Facades\Auth;
+ $notifications = Auth::user()->notifications;
+ $notifications_count = count(Auth::user()->unreadNotifications);
+ @endphp
 <header>
     <div class="topbar d-flex align-items-center">
         <nav class="navbar navbar-expand">
             <div style="margin-top: 10px" class="search-bar flex-grow-1">
                 <div class="position-relative search-bar-box">
-                    <ul>
+                    <ul >
                         @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
                             <a class="btn btn-primary btn-sm radius-30 px-4"
                                rel="alternate"
@@ -21,35 +24,44 @@
             <div class="top-menu ms-auto">
                 <ul class="navbar-nav align-items-center">
                     <li class="nav-item dropdown dropdown-large">
-                        <a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> <span class="alert-count">7</span>
+                        <a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" href="#"
+                           role="button" data-bs-toggle="dropdown" aria-expanded="false" id="notification-count-parent">
+                            @if($notifications_count > 0)
+                                <span class="alert-count">{{$notifications_count}}</span>
+                            @endif
                             <i class='bx bx-bell'></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end">
                             <a href="javascript:;">
                                 <div class="msg-header">
-                                    <p class="msg-header-title">Notifications</p>
-                                    <p class="msg-header-clear ms-auto">Marks all as read</p>
+                                    <p class="msg-header-title">@lang('Notifications')</p>
+                                    <a id="read-all-notifications" href="javascript:;" class="msg-header-clear
+                                    ms-auto">@lang('Marks all as read')</a>
                                 </div>
                             </a>
-                            <div class="header-notifications-list">
-                                <a class="dropdown-item" href="javascript:;">
+                            <div class="header-notifications-list" id="notifications-container">
+                                @foreach(Auth::user()->notifications as $notification)
+                                <a class="dropdown-item" href="{{route('read-order-notification', $notification)}}">
                                     <div class="d-flex align-items-center">
                                         <div class="notify bg-light-primary text-primary"><i class="bx bx-group"></i>
                                         </div>
                                         <div class="flex-grow-1">
-                                            <h6 class="msg-name">New Customers<span class="msg-time float-end">14 Sec
-												ago</span></h6>
-                                            <p class="msg-info">5 new user registered</p>
+                                            <h6 class="msg-name">{{$notification->data['title']}}<span class="msg-time
+                                            float-end">{{$notification->created_at->diffForHumans()}}</span></h6>
+                                            <p class="msg-info">{{$notification->data['content']}}</p>
                                         </div>
                                     </div>
                                 </a>
+                                @endforeach
                             </div>
+                            <!--
                             <a href="javascript:;">
                                 <div class="text-center msg-footer">View All Notifications</div>
                             </a>
+                            -->
                         </div>
                     </li>
-                    <li class="nav-item dropdown dropdown-large">
+                    <li class="nav-item dropdown dropdown-large" hidden>
                         <a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> <span class="alert-count">8</span>
                             <i class='bx bx-comment'></i>
                         </a>
@@ -86,7 +98,7 @@
                     <img src="{{ Auth::user()->profile_photo_url }}" class="user-img" alt="{{ Auth::user()->name }}">
                     <div class="user-info ps-3">
                         <p class="user-name mb-0">{{Auth::user()->name}}</p>
-                        <p class="designattion mb-0">Admin</p>
+                        <p class="designattion mb-0">@if(Auth::user()->is_admin) Admin @endif</p>
                     </div>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">

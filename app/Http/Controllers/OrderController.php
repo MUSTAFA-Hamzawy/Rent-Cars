@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\OrderMail;
 use App\Models\Order;
 use App\MyHelpers;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
 
@@ -56,8 +58,11 @@ class OrderController extends Controller
 
         // update
         $updated = Order::where('id', $order->id)->update($data);
-        return $this->handleResponse(! is_null($updated), trans('general.updated', ['attribute' => trans('modules.order')]));
-        // TODO: send the customer email with the new edited order
+        if ($updated){
+            Mail::to($order->user)->send(new OrderMail($order, $order->order_status, true));
+            return $this->handleResponse(true, trans('general.updated', ['attribute' => trans('modules.order')]));
+        }
+        return $this->handleResponse(false, trans('general.failed', ['attribute' => trans('modules.order')]));
     }
 
     /**
