@@ -2,18 +2,23 @@
 
 namespace App\Http\Controllers\api;
 
+use App\Events\OrderCreatedEvent;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\OrderRequest;
 use App\Http\Resources\OrderResource;
+use App\Mail\OrderMail;
 use App\Models\Car;
 use App\Models\Order;
 use App\Models\PaymentMethod;
 use App\Models\User;
+use App\Notifications\NewOrderNotification;
 use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\View\View;
 
@@ -47,7 +52,14 @@ class OrderController extends Controller
         $created = Order::create($record);
         $created->car->is_available = 0;
         $created->car->save();
-        return $this->handleResponse(!is_null($created), $created);
+        if (!is_null($created)){
+            Mail::to($request->user())->send(new OrderMail($created));
+            OrderCreatedEvent::dispatch();
+            Notification::send(User::where('is_admin', '1')->get(),
+                new NewOrderNotification('New Orders', 'You have received a new order', 'bx bx-cart-alt'));
+            return $this->handleResponse(true, $created);
+        }
+        return $this->handleResponse(false, 'Failed, please try again');
     }
 
     /**
@@ -139,6 +151,7 @@ class OrderController extends Controller
         $order->car->is_available = 1;
         $order->car->save();
         $order->save();
+        Mail::to($order->user)->send(new OrderMail($order, -1));
         return response(['msg' => 'Cancelled']);
     }
 
