@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('branches', function (Blueprint $table) {
             $table->id();
             $table->char('branch_name')->unique();
-            $table->string('branch_address')->unique();
+            $table->string('branch_address');
             $table->json('available_times');
             $table->foreignId('created_by')->constrained('users')
                 ->cascadeOnDelete()->cascadeOnUpdate();
