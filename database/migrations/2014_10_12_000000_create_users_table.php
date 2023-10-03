@@ -20,7 +20,7 @@ return new class extends Migration
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
-            $table->boolean('is_admin')->default('1');
+            $table->boolean('is_admin')->default('0');
             $table->timestamps();
         });
     }
