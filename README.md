@@ -9,7 +9,7 @@
 
 ## About The Project
 
-A backend system (Admin panel + API ) for renting car application built with the Laravel framework, provides a simple and secure platform for online renting cars.
+A backend system (Admin panel + API ) for renting car application built with Laravel framework, provides a simple and secure platform for online renting cars.
 
 ## Demo Video
 Video : <a href="https://youtu.be/REigq-u05Xo" id="demo_video"> Youtube Link </a>
